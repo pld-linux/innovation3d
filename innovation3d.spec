@@ -4,8 +4,8 @@
 
 %bcond_without	tests		# build without tests
 #
-Summary:	Innovation 3D
-Summary(pl):	Innovation 3D
+Summary:	Innovation3D is a 3D modeling program for Linux.
+Summary(pl):	Innovation3D
 Name:		innovation3d
 Version:	0.66.1
 Release:	0.1
@@ -30,6 +30,11 @@ BuildRequires:		xorg-lib-libXmu-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Innovation3D is an Open Source, 3-dimensional modeling program developed for Linux.
+
+The goal of Innovation3D ( I3D ) is to provide a modeling tool that allows an artist to utilize 
+a variety of techniques. Polygonal modeling is currently the focus, but there is some 
+preliminary support for NURBS curves and surfaces, as well as basic animation. 
 
 %description -l pl
 
