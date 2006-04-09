@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_with	tests		# build with tests
+%bcond_with	tiff		# build with tiff support
+
 %bcond_without	tests		# build without tests
 #
 Summary:	Innovation 3D
@@ -20,24 +21,12 @@ URL:		http://innovation3d.sourceforge.net/index.php3
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
 %endif
+BuildRequires:		glut-devel
 BuildRequires:		libtiff-devel
 BuildRequires:		nurbs++-devel
 BuildRequires:		qt-devel
 BuildRequires:		xorg-lib-libXmu-devel
-#BuildRequires:	automake
-#BuildRequires:	intltool
-#BuildRequires:	libtool
-#Requires(postun):	-
-#Requires(pre,post):	-
-#Requires(preun):	-
-#Requires:	-
-#Provides:	-
-#Provides:	group(foo)
-#Provides:	user(foo)
-#Obsoletes:	-
-#Conflicts:	-
-#BuildArch:	noarch
-#ExclusiveArch:	%{ix86}
+
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -92,17 +81,29 @@ Statyczna biblioteka ....
 %patch0 -p1
 
 %build
-#{__intltoolize}
-#{__gettextize}
-#{__libtoolize}
-#{__aclocal}
-#{__autoconf}
-#{__autoheader}
-#{__automake}
-#cp -f /usr/share/automake/config.sub .
 %configure \
-    --with-tiff-prexix=/usr/ 
-#{__make}
+    --x-libraries=/usr/X11R6/lib \
+    %{?with_tiff: --with-tiff-prexix=/usr/ } \
+    --with-python-version=2.4
+
+#    --with-gl-prefix=PFX     Prefix where OpenGL or Mesa is installed
+#    --with-gl-includes=DIR   where the OpenGL or Mesa includes are installed
+#    --with-gl-libraries=DIR  where the OpenGL or Mesa libraries are installed
+#	--with-glut-prefix=PFX     Prefix where GLUT is installed
+#    --with-glut-includes=DIR   where the GLUT includes are installed
+#    --with-glut-libraries=DIR  where the GLUT libraries are installed
+#    --with-tiff-prefix=PFX     Prefix where libtiff is installed
+#  --with-tiff-includes=DIR   where the libtiff includes are installed
+#   --with-tiff-libraries=DIR  where the libtiff libraries are installed
+#    --with-python-version=VER    The version of Python to use, 1.5 is default
+#      --with-python-prefix=PFX    where the root of Python is installed
+#       --with-python-includes=DIR  where the Python includes are installed
+#   --with-python-libraries=DIR where the Python libraries are installed.
+#     --with-dmalloc-cflags=CFLAGS
+					     
+
+    
+%{__make}
 
 #%{__make} \
 #	CFLAGS="%{rpmcflags}" \
