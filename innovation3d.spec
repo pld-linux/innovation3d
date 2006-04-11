@@ -1,44 +1,43 @@
 #
 # Conditional build:
 %bcond_with	tiff		# build with tiff support
-
-%bcond_without	tests		# build without tests
 #
-Summary:	Innovation3D is a 3D modeling program for Linux.
-Summary(pl):	Innovation3D
+Summary:	Innovation3D - 3D modeling program
+Summary(pl):	Innovation3D - program do modelowania 3D
 Name:		innovation3d
 Version:	0.66.1
 Release:	0.1
 License:	GPL
 Group:		Applications
-Source0:	http://dl.sourceforge.net/innovation3d/innovation3d_0.66.1.orig.tar.gz
+Source0:	http://dl.sourceforge.net/innovation3d/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	815996383f11b2bf79c82252fba04654
-#Source1:	-
-# Source1-md5:	-
-Patch0:		http://dl.sourceforge.net/innovation3d/innovation3d_0.66.1-2.diff.gz
-URL:		http://innovation3d.sourceforge.net/index.php3
+Patch0:		http://dl.sourceforge.net/innovation3d/%{name}_0.66.1-2.diff.gz
+URL:		http://innovation3d.sourceforge.net/
 %if %{with initscript}
 BuildRequires:	rpmbuild(macros) >= 1.228
 Requires(post,preun):	/sbin/chkconfig
 %endif
-BuildRequires:		glut-devel
-BuildRequires:		libtiff-devel
-BuildRequires:		nurbs++-devel
-BuildRequires:		qt-devel
-BuildRequires:		xorg-lib-libXmu-devel
+BuildRequires:	glut-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	nurbs++-devel
+BuildRequires:	qt-devel
+BuildRequires:	xorg-lib-libXmu-devel
 
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Innovation3D is an Open Source, 3-dimensional modeling program developed for Linux.
+Innovation3D is an Open Source, 3-dimensional modeling program
+developed for Linux.
 
-The goal of Innovation3D ( I3D ) is to provide a modeling tool that allows an artist to utilize 
-a variety of techniques. Polygonal modeling is currently the focus, but there is some 
-preliminary support for NURBS curves and surfaces, as well as basic animation. 
+The goal of Innovation3D ( I3D ) is to provide a modeling tool that
+allows an artist to utilize a variety of techniques. Polygonal
+modeling is currently the focus, but there is some preliminary support
+for NURBS curves and surfaces, as well as basic animation.
 
 %description -l pl
 
 %package subpackage
+######		Unknown group!
 Summary:	-
 Summary(pl):	-
 Group:		-
@@ -87,7 +86,7 @@ Statyczna biblioteka ....
 
 %build
 %configure \
-    --x-libraries=/usr/X11R6/lib \
+--x-libraries=%{_prefix}/X11R6/lib \
     %{?with_tiff: --with-tiff-prexix=/usr/ } \
     --with-python-version=2.4
 
@@ -105,9 +104,9 @@ Statyczna biblioteka ....
 #       --with-python-includes=DIR  where the Python includes are installed
 #   --with-python-libraries=DIR where the Python libraries are installed.
 #     --with-dmalloc-cflags=CFLAGS
-					     
 
-    
+
+
 %{__make}
 
 #%{__make} \
@@ -125,14 +124,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%pre
-
-%post
-
-%preun
-
-%postun
 
 %if %{with ldconfig}
 %post	-p /sbin/ldconfig
