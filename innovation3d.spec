@@ -1,4 +1,3 @@
-# TODO: mv SPECS/i3d.spec,v SPECS/innovation3d.spec,v
 #
 # Conditional build:
 %bcond_with	tiff		# build with tiff support
