@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_with	tiff		# build with tiff support
+%bcond_with	th		# build for TH
 #
 Summary:	Innovation3D - 3D modeling program
 Summary(pl):	Innovation3D - program do modelowania 3D
@@ -17,7 +18,11 @@ BuildRequires:	glut-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	nurbs++-devel
 BuildRequires:	qt-devel
+%if %{with th}
 BuildRequires:	xorg-lib-libXmu-devel
+%else
+BuildRequires:	XFree86-devel
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
