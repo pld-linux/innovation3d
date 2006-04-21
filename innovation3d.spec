@@ -1,8 +1,3 @@
-#
-# Conditional build:
-%bcond_with	tiff		# build with tiff support
-%bcond_with	th		# build for TH
-#
 Summary:	Innovation3D - 3D modeling program
 Summary(pl):	Innovation3D - program do modelowania 3D
 Name:		innovation3d
@@ -18,11 +13,7 @@ BuildRequires:	glut-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	nurbs++-devel
 BuildRequires:	qt-devel
-%if %{with th}
 BuildRequires:	xorg-lib-libXmu-devel
-%else
-BuildRequires:	XFree86-devel
-%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -49,23 +40,18 @@ obs³uga krzywych i powierzchni NURBS, a tak¿e podstawowej animacji.
 
 %build
 %configure \
-	%{?with_tiff: --with-tiff-prexix=/usr/ } \
-	--with-python-version=2.4
-
-#    --with-gl-prefix=PFX     Prefix where OpenGL or Mesa is installed
-#    --with-gl-includes=DIR   where the OpenGL or Mesa includes are installed
-#    --with-gl-libraries=DIR  where the OpenGL or Mesa libraries are installed
-#	--with-glut-prefix=PFX     Prefix where GLUT is installed
-#    --with-glut-includes=DIR   where the GLUT includes are installed
-#    --with-glut-libraries=DIR  where the GLUT libraries are installed
-#    --with-tiff-prefix=PFX     Prefix where libtiff is installed
-#  --with-tiff-includes=DIR   where the libtiff includes are installed
-#   --with-tiff-libraries=DIR  where the libtiff libraries are installed
-#    --with-python-version=VER    The version of Python to use, 1.5 is default
-#      --with-python-prefix=PFX    where the root of Python is installed
-#       --with-python-includes=DIR  where the Python includes are installed
-#   --with-python-libraries=DIR where the Python libraries are installed.
-#     --with-dmalloc-cflags=CFLAGS
+	--with-x \
+	--with-qt-includes=%{_includedir}/qt \
+	--with-qt-libraries=%{_libdir} \
+	--with-nurbs-includes=%{_includedir}/nurbs++ \
+	--with-nurbs-libs=%{_libdir} \
+	--with-python-version=%{python_version} \
+	--with-python-includes=%{_includedir}/python%{python_version} \
+	--with-python-libraries=%{_libdir} \
+	--with-tiff-includes=%{_includedir} \
+	--with-tiff-libraries=%{_libdir} \
+	--with-gl-libraries=%{_libdir} \
+	--with-glut-libraries=%{_libdir}
 
 %{__make}
 
