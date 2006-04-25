@@ -1,0 +1,48 @@
+--- innovation3d-0.66.1/i3d/Entities/materialparser.cpp.orig	2002-08-02 03:15:47.000000000 +0200
++++ innovation3d-0.66.1/i3d/Entities/materialparser.cpp	2006-04-25 22:37:29.000000000 +0200
+@@ -117,7 +117,7 @@
+   QDomAttr a;
+ 
+   TextureMaterial *tm = new TextureMaterial();
+-  tm -> name = element.attributeNode( "name" ).value();
++  tm -> name = element.attributeNode( "name" ).value().ascii();
+ 
+   e = element.namedItem( "diffuse" ).toElement();
+   tm -> cDiffuse.r = atoi( e.attributeNode( "r" ).value() );
+--- innovation3d-0.66.1/i3d/Entities/texturematerial.cpp.orig	2002-08-02 03:15:47.000000000 +0200
++++ innovation3d-0.66.1/i3d/Entities/texturematerial.cpp	2006-04-25 22:36:01.000000000 +0200
+@@ -30,7 +30,7 @@
+     cDiffuse( 255, 255, 255 ),
+     cEmission( 0, 0, 0 ),
+     cSpecular( 0, 0, 0 ),
+-    name( "Material_" + QString().setNum( mat_num ) )
++    name( "Material_" + string( QString().setNum( mat_num ).ascii() ) )
+ {
+   shininess = 50;
+   alpha = 255;
+--- innovation3d-0.66.1/i3d/MDI/kdockwidget.h.orig	2001-09-20 02:52:00.000000000 +0200
++++ innovation3d-0.66.1/i3d/MDI/kdockwidget.h	2006-04-25 22:18:52.000000000 +0200
+@@ -360,6 +360,12 @@
+  *
+  * @author Max Judin (documentation: Falk Brettschneider).
+  */
++
++class KDockManager;
++class KDockSplitter;
++class KDockMainWindow;
++class KDockArea;
++
+ class EXPORT_DOCKCLASS KDockWidget: public QWidget
+ {
+   Q_OBJECT
+--- innovation3d-0.66.1/i3d/Math/matrix44.h.orig	2001-06-29 14:55:54.000000000 +0200
++++ innovation3d-0.66.1/i3d/Math/matrix44.h	2006-04-25 22:07:32.000000000 +0200
+@@ -42,7 +42,7 @@
+   // assignment
+ 
+   Matrix44& Assign(const float [4][4]);
+-  Matrix44& Matrix44::Assignf(const float mat[16]);
++  Matrix44& Assignf(const float mat[16]);
+ 
+   Matrix44& TransposeAssign(const float [4][4]);
+ 
