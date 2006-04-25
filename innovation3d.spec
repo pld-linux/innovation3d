@@ -8,6 +8,7 @@ Group:		Applications
 Source0:	http://dl.sourceforge.net/innovation3d/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	815996383f11b2bf79c82252fba04654
 Patch0:		http://dl.sourceforge.net/innovation3d/%{name}_0.66.1-2.diff.gz
+Patch1:		%{name}-gcc4.patch
 URL:		http://innovation3d.sourceforge.net/
 BuildRequires:	glut-devel
 BuildRequires:	libtiff-devel
@@ -15,6 +16,8 @@ BuildRequires:	nurbs++-devel
 BuildRequires:	qt-devel
 BuildRequires:	xorg-lib-libXmu-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		specflags	-ffriend-injection
 
 %description
 Innovation3D is an Open Source, 3-dimensional modeling program
@@ -37,6 +40,7 @@ obs³uga krzywych i powierzchni NURBS, a tak¿e podstawowej animacji.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %configure \
