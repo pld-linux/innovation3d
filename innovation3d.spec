@@ -1,5 +1,5 @@
 Summary:	Innovation3D - 3D modeling program
-Summary(pl):	Innovation3D - program do modelowania 3D
+Summary(pl.UTF-8):   Innovation3D - program do modelowania 3D
 Name:		innovation3d
 Version:	0.66.1
 Release:	0.1
@@ -28,14 +28,14 @@ allows an artist to utilize a variety of techniques. Polygonal
 modeling is currently the focus, but there is some preliminary support
 for NURBS curves and surfaces, as well as basic animation.
 
-%description -l pl
-Innovation3D to program do modelowania trójwymiarowego tworzony dla
-Linuksa, udostêpniany z otwartymi ¼ród³ami.
+%description -l pl.UTF-8
+Innovation3D to program do modelowania trÃ³jwymiarowego tworzony dla
+Linuksa, udostÄ™pniany z otwartymi ÅºrÃ³dÅ‚ami.
 
-Celem Innovation3D (I3D) jest dostarczenie narzêdzia do modelowania
-pozwalaj±cego arty¶cie wykorzystywaæ ró¿norodne techniki. G³ównym
-elementem jest teraz modelowanie wielok±tami, ale jest pocz±tkowa
-obs³uga krzywych i powierzchni NURBS, a tak¿e podstawowej animacji.
+Celem Innovation3D (I3D) jest dostarczenie narzÄ™dzia do modelowania
+pozwalajÄ…cego artyÅ›cie wykorzystywaÄ‡ rÃ³Å¼norodne techniki. GÅ‚Ã³wnym
+elementem jest teraz modelowanie wielokÄ…tami, ale jest poczÄ…tkowa
+obsÅ‚uga krzywych i powierzchni NURBS, a takÅ¼e podstawowej animacji.
 
 %prep
 %setup -q
