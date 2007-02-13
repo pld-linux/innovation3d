@@ -1,5 +1,5 @@
 Summary:	Innovation3D - 3D modeling program
-Summary(pl.UTF-8):   Innovation3D - program do modelowania 3D
+Summary(pl.UTF-8):	Innovation3D - program do modelowania 3D
 Name:		innovation3d
 Version:	0.66.1
 Release:	0.1
