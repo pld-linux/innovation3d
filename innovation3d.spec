@@ -8,6 +8,7 @@ Group:		Applications
 Source0:	http://dl.sourceforge.net/innovation3d/%{name}_%{version}.orig.tar.gz
 # Source0-md5:	815996383f11b2bf79c82252fba04654
 Patch0:		http://dl.sourceforge.net/innovation3d/%{name}_0.66.1-2.diff.gz
+# Patch0-md5:	16bff5638fa48a201dedaf6d50dcacb7
 Patch1:		%{name}-gcc4.patch
 URL:		http://innovation3d.sourceforge.net/
 BuildRequires:	glut-devel
